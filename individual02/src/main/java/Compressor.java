@@ -1,13 +1,9 @@
-package dev.ohate.csci3302;
-
-import java.util.Scanner;
-
 public class Compressor {
 
     /**
      * Repeats a string n amount of times recursively.
      *
-     * @param n      the amount of times for the string to be repeated.
+     * @param n      the number of times for the string to be repeated.
      * @param string the string being repeated.
      * @return string repeated n times.
      * @throws IllegalArgumentException if n is less than 0

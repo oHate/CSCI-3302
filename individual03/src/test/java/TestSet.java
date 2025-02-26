@@ -1,5 +1,4 @@
-package dev.ohate.csci3302;
-
+import dev.ohate.csci3302.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,12 +6,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestSet {
 
+    private Set<Integer> empty;
     private Set<Integer> nums;
     private Set<Integer> odds;
     private Set<Integer> triples;
 
     @BeforeEach
     public void setUp() {
+        this.empty = new Set<>();
         this.nums = new Set<>();
         this.odds = new Set<>();
         this.triples = new Set<>();
@@ -31,6 +32,12 @@ public class TestSet {
     }
 
     @Test
+    public void isEmpty() {
+        assertTrue(this.empty.isEmpty());
+        assertFalse(this.odds.isEmpty());
+    }
+
+    @Test
     public void size() {
         assertEquals(10, this.nums.size());
         assertEquals(5, this.odds.size());
@@ -38,18 +45,17 @@ public class TestSet {
     }
 
     @Test
-    public void isEmpty() {
+    public void removeAll() {
         this.nums.removeAll();
 
         assertTrue(this.nums.isEmpty());
-        assertFalse(this.odds.isEmpty());
+        assertFalse(this.nums.contains(1));
+        assertFalse(this.nums.contains(10));
     }
 
     @Test
     public void contains() {
-        this.nums.removeAll();
-
-        assertTrue(this.odds.contains(9));
+        assertTrue(this.empty.contains(9));
         assertFalse(this.nums.contains(1));
     }
 
@@ -121,47 +127,5 @@ public class TestSet {
 
         assertFalse(setA.isSubsetOf(setB));
     }
-
-//      | public boolean isSubsetOf(Set<E> set);
-//      | public Set<E> intersect(Set<E> set);
-
-//
-//        System.out.println("nums: " + nums);
-//        System.out.println("odds: " + odds);
-//        System.out.println("union of nums and odds: " + nums.union(odds));
-//        System.out.println("intersection of nums and odds: " + nums.intersect(odds));
-//        System.out.println();
-//
-//        System.out.println("subset of nums and odds: " + nums.isSubsetOf(odds));
-//        System.out.println();
-//
-//        Set<Integer> lowNums = new Set<>();
-//        lowNums.add(2);
-//        lowNums.add(3);
-//        lowNums.add(4);
-//
-//        System.out.println("lowNums: " + lowNums);
-//        System.out.println("subset of lowNums and nums: " + lowNums.isSubsetOf(nums));
-//        System.out.println();
-//
-//        Set<Integer> empty1 = new Set<>();
-//        Set<Integer> empty2 = new Set<>();
-//
-//        System.out.println("empty subset of nums: " + empty1.isSubsetOf(nums));
-//        System.out.println("nums subset of empty: " + nums.isSubsetOf(empty1));
-//        System.out.println();
-//
-//        System.out.println("empty union: " + empty1.union(empty2));
-//        System.out.println("nums intersect empty: " + nums.intersect(empty1));
-//        System.out.println();
-//
-//        System.out.println("nums: " + nums);
-//        System.out.println("nums size: " + nums.size());
-//        System.out.println("nums empty: " + nums.isEmpty());
-//
-//        nums.removeAll();
-//        System.out.println("nums remove all: " + nums);
-//        System.out.println("nums empty: " + nums.isEmpty());
-//    }
 
 }

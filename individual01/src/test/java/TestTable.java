@@ -1,5 +1,3 @@
-package dev.ohate.csci3302;
-
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,6 +6,9 @@ public class TestTable {
 
     private Table table;
 
+    /**
+     * Dummy Data
+     */
     @BeforeEach
     public void setUp() {
         this.table = new Table(3, 4);
@@ -30,7 +31,7 @@ public class TestTable {
 
     @Test
     public void loadValues() {
-        Table loadedTable = new dev.ohate.csci3302.Table(3, 4);
+        Table loadedTable = new Table(3, 4);
 
         assertDoesNotThrow(() -> loadedTable.loadValues("src/test/resources/test.dat"));
         assertEquals(loadedTable, this.table);

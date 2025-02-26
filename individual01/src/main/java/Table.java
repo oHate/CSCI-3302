@@ -1,5 +1,3 @@
-package dev.ohate.csci3302;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;

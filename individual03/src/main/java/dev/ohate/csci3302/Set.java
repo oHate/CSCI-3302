@@ -5,7 +5,7 @@ public class Set<E> implements SetADT<E> {
     private Node<E> leadNode;
 
     /**
-     * Constructs set with element as the head.
+     * Constructs set with an element as the head.
      * @param element the head of the set.
      */
     public Set(E element) {
