@@ -1,5 +1,3 @@
-package dev.ohate.csci3302;
-
 public class Set<E> implements SetADT<E> {
 
     private Node<E> leadNode;

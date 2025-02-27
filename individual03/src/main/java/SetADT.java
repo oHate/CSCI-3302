@@ -1,5 +1,3 @@
-package dev.ohate.csci3302;
-
 public interface SetADT<E> {
 
     /**

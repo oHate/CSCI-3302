@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Table {
 
-    double[][] values;
+    private final double[][] values;
 
     /**
      * Initializes the table with a specific number of rows and columns.
@@ -23,7 +23,7 @@ public class Table {
             throw new IllegalArgumentException("The columns argument was <= 0");
         }
 
-        values = new double[rows][columns];
+        this.values = new double[rows][columns];
     }
 
     /**
@@ -32,7 +32,7 @@ public class Table {
      * @return the number of rows.
      */
     public int getNumberOfRows() {
-        return values.length;
+        return this.values.length;
     }
 
     /**
@@ -41,7 +41,7 @@ public class Table {
      * @return the number of columns.
      */
     public int getNumberOfColumns() {
-        return values[0].length;
+        return this.values[0].length;
     }
 
     /**
@@ -58,7 +58,7 @@ public class Table {
         checkRow(row);
         checkColumn(column);
 
-        return values[row][column];
+        return this.values[row][column];
     }
 
     /**
@@ -74,7 +74,7 @@ public class Table {
         checkRow(row);
         checkColumn(column);
 
-        values[row][column] = value;
+        this.values[row][column] = value;
     }
 
     /**
@@ -87,9 +87,9 @@ public class Table {
         row--;
         checkRow(row);
 
-        double minValue = values[row][0];
+        double minValue = this.values[row][0];
 
-        for (double value : values[row]) {
+        for (double value : this.values[row]) {
             minValue = Math.min(minValue, value);
         }
 
@@ -106,9 +106,9 @@ public class Table {
         row--;
         checkRow(row);
 
-        double maxValue = values[row][0];
+        double maxValue = this.values[row][0];
 
-        for (double value : values[row]) {
+        for (double value : this.values[row]) {
             maxValue = Math.max(maxValue, value);
         }
 
@@ -127,7 +127,7 @@ public class Table {
 
         double total = 0;
 
-        for (double value : values[row]) {
+        for (double value : this.values[row]) {
             total += value;
         }
 
@@ -144,10 +144,10 @@ public class Table {
         column--;
         checkColumn(column);
 
-        double minValue = values[0][column];
+        double minValue = this.values[0][column];
 
         for (int row = 0; row < getNumberOfRows(); row++) {
-            minValue = Math.min(minValue, values[row][column]);
+            minValue = Math.min(minValue, this.values[row][column]);
         }
 
         return minValue;
@@ -163,10 +163,10 @@ public class Table {
         column--;
         checkColumn(column);
 
-        double maxValue = values[0][column];
+        double maxValue = this.values[0][column];
 
         for (int row = 0; row < getNumberOfRows(); row++) {
-            maxValue = Math.max(maxValue, values[row][column]);
+            maxValue = Math.max(maxValue, this.values[row][column]);
         }
 
         return maxValue;
@@ -185,7 +185,7 @@ public class Table {
         double total = 0;
 
         for (int row = 0; row < getNumberOfRows(); row++) {
-            total += values[row][column];
+            total += this.values[row][column];
         }
 
         return total / getNumberOfRows();
@@ -197,11 +197,11 @@ public class Table {
      * @return the smallest value.
      */
     public double getMin() {
-        double minValue = values[0][0];
+        double minValue = this.values[0][0];
 
         for (int row = 0; row < getNumberOfRows(); row++) {
             for (int column = 0; column < getNumberOfColumns(); column++) {
-                minValue = Math.min(minValue, values[row][column]);
+                minValue = Math.min(minValue, this.values[row][column]);
             }
         }
 
@@ -214,11 +214,11 @@ public class Table {
      * @return the biggest value.
      */
     public double getMax() {
-        double maxValue = values[0][0];
+        double maxValue = this.values[0][0];
 
         for (int row = 0; row < getNumberOfRows(); row++) {
             for (int column = 0; column < getNumberOfColumns(); column++) {
-                maxValue = Math.max(maxValue, values[row][column]);
+                maxValue = Math.max(maxValue, this.values[row][column]);
             }
         }
 
@@ -235,7 +235,7 @@ public class Table {
 
         for (int row = 0; row < getNumberOfRows(); row++) {
             for (int column = 0; column < getNumberOfColumns(); column++) {
-                total += values[row][column];
+                total += this.values[row][column];
             }
         }
 
@@ -254,7 +254,6 @@ public class Table {
         double first = a;
         double second = b;
 
-        // Swap if a is greater than b
         if (first > second) {
             first = b;
             second = a;
@@ -264,7 +263,7 @@ public class Table {
 
         for (int row = 0; row < getNumberOfRows(); row++) {
             for (int column = 0; column < getNumberOfColumns(); column++) {
-                double value = values[row][column];
+                double value = this.values[row][column];
 
                 if (value >= first && value <= second) {
                     totalFound++;
@@ -287,7 +286,7 @@ public class Table {
 
         for (int row = 0; row < getNumberOfRows(); row++) {
             for (int column = 0; column < getNumberOfColumns(); column++) {
-                values[row][column] = scanner.nextDouble();
+                this.values[row][column] = scanner.nextDouble();
             }
         }
 
@@ -328,7 +327,7 @@ public class Table {
 
         for (int row = 0; row < getNumberOfRows(); row++) {
             for (int column = 0; column < getNumberOfColumns(); column++) {
-                builder.append(values[row][column]).append(" ");
+                builder.append(this.values[row][column]).append(" ");
             }
 
             builder.append("\n");
@@ -342,12 +341,12 @@ public class Table {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Table table = (Table) o;
-        return Objects.deepEquals(values, table.values);
+        return Objects.deepEquals(this.values, table.values);
     }
 
     @Override
     public int hashCode() {
-        return Arrays.deepHashCode(values);
+        return Arrays.deepHashCode(this.values);
     }
 
 }

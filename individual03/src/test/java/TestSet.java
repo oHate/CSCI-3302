@@ -1,4 +1,3 @@
-import dev.ohate.csci3302.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,20 +31,20 @@ public class TestSet {
     }
 
     @Test
-    public void isEmpty() {
+    public void testIsEmpty() {
         assertTrue(this.empty.isEmpty());
         assertFalse(this.odds.isEmpty());
     }
 
     @Test
-    public void size() {
+    public void testSize() {
         assertEquals(10, this.nums.size());
         assertEquals(5, this.odds.size());
         assertEquals(7, this.triples.size());
     }
 
     @Test
-    public void removeAll() {
+    public void testRemoveAll() {
         this.nums.removeAll();
 
         assertTrue(this.nums.isEmpty());
@@ -54,20 +53,20 @@ public class TestSet {
     }
 
     @Test
-    public void contains() {
+    public void testContains() {
         assertTrue(this.empty.contains(9));
         assertFalse(this.nums.contains(1));
     }
 
     @Test
-    public void add() {
+    public void testAdd() {
         this.nums.add(11);
 
         assertTrue(this.nums.contains(11));
     }
 
     @Test
-    public void remove() {
+    public void testRemove() {
         this.nums.remove(1);
         this.nums.remove(10);
 
@@ -76,7 +75,7 @@ public class TestSet {
     }
 
     @Test
-    public void union() {
+    public void testUnion() {
         Set<Integer> setA = new Set<>();
 
         for (int i = 1; i <= 9; i += 2) {
@@ -93,7 +92,7 @@ public class TestSet {
     }
 
     @Test
-    public void intersect() {
+    public void testIntersect() {
         Set<Integer> setA = new Set<>();
         setA.add(3);
         setA.add(9);
@@ -112,7 +111,7 @@ public class TestSet {
     }
 
     @Test
-    public void isSubsetOf() {
+    public void testIsSubsetOf() {
         assertTrue(this.odds.isSubsetOf(this.nums));
 
         Set<Integer> setA = new Set<>();

@@ -12,6 +12,7 @@
         <module>individual01</module>
         <module>individual02</module>
         <module>individual03</module>
+        <module>individual04</module>
     </modules>
 
     <properties>
